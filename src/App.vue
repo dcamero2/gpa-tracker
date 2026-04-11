@@ -31,8 +31,37 @@
       </tbody>
     </table>
 
-    <h2 :class="gradeColor">
-      Final Grade: {{ finalGrade }}%
-    </h2>
+    <h2>Final Grade: --%</h2>
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+
+const name = ref('')
+const grade = ref('')
+const weight =ref('')
+
+const assignments = ref([])
+
+const addAssignment = () => {
+  if (!name.value || !grade.value || !weight.value) return
+
+  assignments.value.push({
+    name: name.value,
+    grade: Number(grade.value),
+    weight: Number(weight.value)
+  })
+
+  name.value = ''
+  grade.value = ''
+  weight.value = ''
+}
+
+const deleteAssignment = (index) => {
+  assignments.value.splice(index, 1)
+}
+</script>
+
+<style>
+</style>
