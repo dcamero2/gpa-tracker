@@ -31,12 +31,12 @@
       </tbody>
     </table>
 
-    <h2>Final Grade: --%</h2>
+    <h2>Final Grade: {{ finalGrade }}%</h2>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const name = ref('')
 const grade = ref('')
@@ -61,6 +61,18 @@ const addAssignment = () => {
 const deleteAssignment = (index) => {
   assignments.value.splice(index, 1)
 }
+
+const finalGrade = computed(() => {
+  let total = 0
+  let weightSum = 0
+
+  assignments.value.forEach(a => {
+    total += a.grade * a.weight
+    weightSum += a.weight
+  })
+
+  return weightSum ? (total / weightSum).toFixed(2) : 0
+})
 </script>
 
 <style>
