@@ -53,9 +53,11 @@
       </tbody>
     </table>
 
-    <h2>
-      Final Grade: {{ finalGrade }}%
-    </h2>
+    <div class="grade-container">
+      <div :class="['grade-bubble', gradeColor]">
+        Final Grade: {{ finalGrade }}%
+      </div>
+    </div>
   </div>
 </template>
 
@@ -111,6 +113,14 @@ const finalGrade = computed(() => {
     : '0.00'
 })
 
+// dynamic bubble color
+const gradeColor = computed(() => {
+  if (finalGrade.value >= 90) return 'green'
+  if (finalGrade.value >= 80) return 'lightgreen'
+  if (finalGrade.value >= 70) return 'yellow'
+  return 'red'
+})
+
 // auto-save assignments
 watch(assignments, (newVal) => {
   localStorage.setItem(
@@ -119,6 +129,3 @@ watch(assignments, (newVal) => {
   )
 }, { deep: true })
 </script>
-
-<style>
-</style>
