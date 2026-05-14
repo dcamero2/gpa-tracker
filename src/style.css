@@ -306,12 +306,24 @@ th {
   padding: 40px 20px;
 }
 
-.form {
-  margin-top: 20px;
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.gpa-form {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+}
+
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .form input {
@@ -396,4 +408,46 @@ table button:hover {
     flex-direction: column;
     align-items: center;
   }
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top-bar {
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  color: white;
+}
+
+.welcome {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.top-bar .logout {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #ef4444;
+  color: white;
+  cursor: pointer;
+}
+
+.top-bar .logout:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
 }
